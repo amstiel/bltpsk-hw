@@ -1,0 +1,23 @@
+@use '/src/styles/variables' as vars;
+
+.root {
+  background-color: vars.$colorGray1;
+  padding: 24px 32px;
+}
+
+.linksList {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
