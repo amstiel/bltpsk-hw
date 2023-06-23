@@ -1,0 +1,9 @@
+@use '/src/styles/variables' as vars;
+
+.root {
+  margin-inline: auto;
+  padding-right: 32px;
+  padding-left: 32px;
+  width: 100%;
+  max-width: vars.$containerMaxWidth;
+}

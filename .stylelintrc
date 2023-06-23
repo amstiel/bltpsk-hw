@@ -2,8 +2,7 @@
   "plugins": [
     "stylelint-scss",
     "stylelint-order",
-    "stylelint-prettier",
-    "@primer/stylelint-config/plugins/no-unused-vars"
+    "stylelint-prettier"
   ],
   "customSyntax": "postcss-scss",
   "rules": {
@@ -70,7 +69,6 @@
     }],
     "length-zero-no-unit": true,
     "shorthand-property-no-redundant-values": true,
-    "color-named": "always-where-possible",
-    "primer/no-unused-vars": true
+    "color-named": "always-where-possible"
   }
 }
