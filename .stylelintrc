@@ -1,0 +1,76 @@
+{
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-order",
+    "stylelint-prettier",
+    "@primer/stylelint-config/plugins/no-unused-vars"
+  ],
+  "customSyntax": "postcss-scss",
+  "rules": {
+    "prettier/prettier": true,
+    "font-family-no-duplicate-names": true,
+    "selector-max-id": 0,
+    "comment-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"]
+      }
+    ],
+    "declaration-block-single-line-max-declarations": 1,
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": ["blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment"],
+        "ignoreAtRules": ["else"]
+      }
+    ],
+    "rule-empty-line-before": [
+      "always",
+      {
+        "except": ["after-single-line-comment", "first-nested"]
+      }
+    ],
+    "order/order": [
+      {
+        "type": "at-rule"
+      },
+      "declarations",
+      {
+        "type": "at-rule",
+        "hasBlock": true
+      },
+      "rules"
+    ],
+    "max-nesting-depth": null,
+    "scss/at-extend-no-missing-placeholder": null,
+    "scss/dollar-variable-pattern": "^_?[a-z]+[\\w-]*$",
+    "scss/at-use-no-unnamespaced": true,
+    "scss/no-duplicate-dollar-variables": [
+      true,
+      {
+        "ignoreInside": ["at-rule", "nested-at-rule"],
+        "ignoreInsideAtRules": ["include"]
+      }
+    ],
+    "scss/no-duplicate-mixins": true,
+    "scss/operator-no-unspaced": true,
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": ["size"],
+        "checkPrefixed": true
+      }
+    ],
+    "declaration-block-no-shorthand-property-overrides": true,
+    "declaration-block-no-duplicate-properties": true,
+    "declaration-block-no-duplicate-custom-properties": true,
+    "declaration-block-no-redundant-longhand-properties": [true, {
+      "ignoreShorthands": ["font"]
+    }],
+    "length-zero-no-unit": true,
+    "shorthand-property-no-redundant-values": true,
+    "color-named": "always-where-possible",
+    "primer/no-unused-vars": true
+  }
+}

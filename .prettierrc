@@ -1,0 +1,36 @@
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "arrowParens": "always",
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": ["**/*.{scss,css}"],
+      "options": {
+        "order": "concentric-css"
+      }
+    }
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderGroupNamespaceSpecifiers": true,
+  "importOrderCaseInsensitive": true,
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "^@/domains/(.*)$",
+    "^@/stores/(.*)$",
+    "^@/api/(.*)$",
+    "^@/utils/(.*)$",
+    "^@/router/(.*)$",
+    "^@/hooks/(.*)$",
+    "^@/views/(.*)$",
+    "^@/layouts/(.*)$",
+    "^@/components/(.*)$",
+    "^\\.\\/.+(?<!s?css)$",
+    "^@/styles/(.*)$",
+    "^\\./.+\\.s?css$",
+    "^@/assets/(.*)$",
+    "^[./]"
+  ]
+}
