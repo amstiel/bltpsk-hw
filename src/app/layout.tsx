@@ -1,10 +1,15 @@
-import { Inter } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 
 import { Header } from '@/components/Header/Header';
 
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Roboto({
+  subsets: ['cyrillic'],
+  style: ['normal', 'italic'],
+  weight: ['400', '700'],
+  display: 'swap',
+});
 
 export const metadata = {
   title: 'Create Next App',
