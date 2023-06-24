@@ -1,11 +1,29 @@
+import clsx from 'clsx';
 import { Roboto } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
 
 import './globals.css';
 
-const inter = Roboto({
+const sfProFont = localFont({
+  src: [
+    {
+      path: '../fonts/San Francisco Pro Text/SFProDisplay-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/San Francisco Pro Text/SFProDisplay-Regular.woff',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  display: 'swap',
+});
+
+const robotoFont = Roboto({
   subsets: ['cyrillic'],
   style: ['normal', 'italic'],
   weight: ['400', '700'],
@@ -20,7 +38,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={clsx(sfProFont.className, robotoFont.className)}>
         <Header />
         <main>{children}</main>
         <Footer />
