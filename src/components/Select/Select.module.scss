@@ -1,4 +1,7 @@
+@use 'sass:math' as math;
 @use '/src/styles/variables' as vars;
+
+$inputHeight: 40px;
 
 .root {
   position: relative;
@@ -22,7 +25,7 @@
   border-radius: 8px;
   padding: 10px 16px;
   width: 100%;
-  height: 40px;
+  height: $inputHeight;
   font-family: vars.$fontFamilyInputs;
   user-select: none;
 
@@ -39,4 +42,8 @@
   &.isOpen {
     border-color: vars.$colorOrange;
   }
+}
+
+:export {
+  inputHeight: math.div($inputHeight, 1px);
 }

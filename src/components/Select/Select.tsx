@@ -27,7 +27,7 @@ const OptionsList: FC<OptionsListProps> = (props) => {
   const { options, selectedValue, onSelect } = props;
 
   return (
-    <ul>
+    <ul style={{ listStyle: 'none', width: '100%' }}>
       {options.map((option) => (
         <li
           key={option.value}
@@ -88,9 +88,11 @@ export const Select: FC<SelectProps> = (props) => {
             ref={dropdownMenuRef}
             className="dropdown-menu"
             style={{
+              backgroundColor: 'yellow',
               position: 'absolute',
-              top: Number(inputRef.current?.getBoundingClientRect().y) + 40,
-              left: inputRef.current?.getBoundingClientRect().x,
+              width: Number(inputRef.current?.getBoundingClientRect().width),
+              top: Number(inputRef.current?.getBoundingClientRect().y) + Number(styles.inputHeight),
+              left: Number(inputRef.current?.getBoundingClientRect().x),
             }}
           >
             <OptionsList
@@ -99,7 +101,7 @@ export const Select: FC<SelectProps> = (props) => {
               selectedValue={selectedValue}
             />
           </div>,
-          document.getElementById('portal')!
+          document.getElementById('dropdowns-portal-wrapper')!
         )}
     </div>
   );

@@ -41,7 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
         </div>
 
-        <div id="portal" />
+        <div id="dropdowns-portal-wrapper" />
+        <div id="modals-portal-wrapper" />
       </body>
     </html>
   );
