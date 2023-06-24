@@ -44,6 +44,7 @@ $inputHeight: 40px;
   }
 }
 
+// stylelint-disable property-no-unknown
 :export {
   inputHeight: math.div($inputHeight, 1px);
 }
