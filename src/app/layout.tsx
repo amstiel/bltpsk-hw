@@ -15,6 +15,7 @@ const sfProFont = localFont({
       style: 'normal',
     },
   ],
+  variable: '--font-inputs',
   display: 'swap',
 });
 
@@ -32,11 +33,15 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={clsx(sfProFont.className, robotoFont.className)}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+    <html lang="ru">
+      <body className={clsx(sfProFont.variable, robotoFont.className)}>
+        <div className="layout">
+          <Header />
+          {children}
+          <Footer />
+        </div>
+
+        <div id="portal" />
       </body>
     </html>
   );

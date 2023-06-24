@@ -2,7 +2,7 @@
 
 .root {
   background-color: vars.$colorGray1;
-  padding: 24px 32px;
+  color: white;
 }
 
 .cartButton {
@@ -16,6 +16,7 @@
 .content {
   display: flex;
   justify-content: space-between;
+  padding-block: 24px;
 }
 
 .title {
