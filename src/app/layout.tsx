@@ -14,11 +14,6 @@ const sfProFont = localFont({
       weight: '400',
       style: 'normal',
     },
-    {
-      path: '../fonts/San Francisco Pro Text/SFProDisplay-Regular.woff',
-      weight: '400',
-      style: 'normal',
-    },
   ],
   display: 'swap',
 });
