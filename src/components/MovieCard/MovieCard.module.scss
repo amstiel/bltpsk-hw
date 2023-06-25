@@ -1,4 +1,7 @@
+@use '/src/styles/variables' as vars;
+
 .image {
+  margin-right: 24px;
   border-radius: 8px;
   object-fit: cover;
 }
@@ -18,4 +21,54 @@
   display: flex;
   align-items: flex-start;
   margin-left: auto;
+}
+
+.actionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: vars.$colorOrange;
+  width: 20px;
+  height: 20px;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px vars.$colorOrangeDisabled;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: vars.$colorOrangeDisabled;
+  }
+
+  &:not(&:disabled) {
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.deleteButton {
+  @extend .actionButton;
+
+  margin-left: 24px;
+  background-color: white;
+
+  &:hover {
+    background-color: vars.$colorBorder;
+  }
+}
+
+.amount {
+  margin-inline: 4px;
+  width: 22px;
+  font-weight: 700;
+  text-align: center;
 }

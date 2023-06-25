@@ -18,10 +18,11 @@ type MovieCardProps = {
   title: string;
   genre: MovieGenre;
   imageUrl: string;
+  isDeletable?: boolean;
 };
 
 export const MovieCard: FC<MovieCardProps> = (props) => {
-  const { id, title, genre, imageUrl } = props;
+  const { id, title, genre, imageUrl, isDeletable = false } = props;
   const dispatch = useDispatch();
   const amount = useSelector<StoreState, number>((state) => selectProductAmount(state, id));
 
@@ -33,16 +34,26 @@ export const MovieCard: FC<MovieCardProps> = (props) => {
         <p>{genre}</p>
       </div>
       <div className={styles.actions}>
-        <button onClick={() => dispatch(cartActions.decrement(id))}>
+        <button
+          className={styles.actionButton}
+          disabled={amount === 0}
+          onClick={() => dispatch(cartActions.decrement(id))}
+        >
           <MinusIcon />
         </button>
-        <span>{amount}</span>
-        <button onClick={() => dispatch(cartActions.increment(id))}>
+        <span className={styles.amount}>{amount}</span>
+        <button
+          className={styles.actionButton}
+          disabled={amount === 30}
+          onClick={() => dispatch(cartActions.increment(id))}
+        >
           <PlusIcon />
         </button>
-        <button onClick={() => dispatch(cartActions.delete(id))}>
-          <CrossIcon />
-        </button>
+        {isDeletable && (
+          <button className={styles.deleteButton} onClick={() => dispatch(cartActions.delete(id))}>
+            <CrossIcon />
+          </button>
+        )}
       </div>
     </article>
   );
