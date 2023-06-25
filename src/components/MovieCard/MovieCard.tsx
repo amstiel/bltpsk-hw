@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { cartActions } from '@/redux/features/cart';
+import { selectProductAmount } from '@/redux/features/cart/selector';
 import type { MovieGenre } from '@/redux/services/types';
+import { StoreState } from '@/redux/store';
 
 import { CrossIcon } from '@/icons/CrossIcon';
 import { MinusIcon } from '@/icons/MinusIcon';
@@ -10,14 +14,16 @@ import { PlusIcon } from '@/icons/PlusIcon';
 import styles from './MovieCard.module.scss';
 
 type MovieCardProps = {
+  id: string;
   title: string;
-
   genre: MovieGenre;
   imageUrl: string;
 };
 
 export const MovieCard: FC<MovieCardProps> = (props) => {
-  const { title, genre, imageUrl } = props;
+  const { id, title, genre, imageUrl } = props;
+  const dispatch = useDispatch();
+  const amount = useSelector<StoreState, number>((state) => selectProductAmount(state, id));
 
   return (
     <article className={styles.root}>
@@ -27,14 +33,14 @@ export const MovieCard: FC<MovieCardProps> = (props) => {
         <p>{genre}</p>
       </div>
       <div className={styles.actions}>
-        <button>
+        <button onClick={() => dispatch(cartActions.decrement(id))}>
           <MinusIcon />
         </button>
-        <span>12</span>
-        <button>
+        <span>{amount}</span>
+        <button onClick={() => dispatch(cartActions.increment(id))}>
           <PlusIcon />
         </button>
-        <button>
+        <button onClick={() => dispatch(cartActions.delete(id))}>
           <CrossIcon />
         </button>
       </div>

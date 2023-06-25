@@ -13,6 +13,7 @@ export const MoviesList: FC = () => {
     <section style={{ flexGrow: 1 }}>
       {movies?.map((movie) => (
         <MovieCard
+          id={movie.id}
           key={movie.id}
           genre={movie.genre}
           title={movie.title}
