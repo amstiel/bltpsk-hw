@@ -1,0 +1,30 @@
+@use '/src/styles/variables' as vars;
+
+@mixin inputBase {
+  border: 1px solid vars.$colorBorder;
+  border-radius: 8px;
+  padding: 10px 16px;
+  width: 100%;
+  font-size: 14px;
+  font-family: vars.$fontFamilyInputs;
+
+  &::placeholder {
+    color: vars.$colorTextTertiary;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  &:focus-visible {
+    border-color: vars.$colorOrange;
+  }
+}
+
+@mixin labelBase {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  font-family: vars.$fontFamilyInputs;
+}

@@ -1,0 +1,10 @@
+@use '/src/styles/form' as form;
+@use '/src/styles/variables' as vars;
+
+.input {
+  @include form.inputBase();
+}
+
+.label {
+  @include form.labelBase();
+}

@@ -13,10 +13,6 @@ export type SelectOptions = {
   value: string;
 };
 
-type SelectProps = {
-  options: SelectOptions[];
-};
-
 type OptionsListProps = {
   options: SelectProps['options'];
   selectedValue: SelectOptions['value'] | null;
@@ -44,8 +40,14 @@ const OptionsList: FC<OptionsListProps> = (props) => {
   );
 };
 
+type SelectProps = {
+  options: SelectOptions[];
+  label: string;
+  placeholder?: string;
+};
+
 export const Select: FC<SelectProps> = (props) => {
-  const { options } = props;
+  const { options, label, placeholder } = props;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<SelectOptions['value'] | null>(null);
 
@@ -68,7 +70,8 @@ export const Select: FC<SelectProps> = (props) => {
   }, [inputRef, dropdownMenuRef]);
 
   return (
-    <div className={styles.root}>
+    <label className={styles.root}>
+      <span className={styles.label}>{label}</span>
       <input
         type="text"
         className={clsx(styles.input, isOpen && styles.isOpen)}
@@ -77,7 +80,7 @@ export const Select: FC<SelectProps> = (props) => {
         }
         readOnly
         ref={inputRef}
-        placeholder="Выберите жанр"
+        placeholder={placeholder}
         onClick={() => {
           setIsOpen((prevState) => {
             return !prevState;
@@ -110,6 +113,6 @@ export const Select: FC<SelectProps> = (props) => {
           </div>,
           document.getElementById('dropdowns-portal-wrapper')!
         )}
-    </div>
+    </label>
   );
 };

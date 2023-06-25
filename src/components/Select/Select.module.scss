@@ -1,5 +1,6 @@
 @use 'sass:math' as math;
 @use '/src/styles/variables' as vars;
+@use '/src/styles/form' as form;
 
 $inputHeight: 40px;
 
@@ -9,10 +10,11 @@ $inputHeight: 40px;
 
 .icon {
   position: absolute;
-  top: 10px;
   right: 16px;
+  bottom: 10px;
   transform: rotate(180deg);
   transition: transform 0.125s ease-in-out;
+  pointer-events: none;
 
   &.isOpen {
     transform: rotate(0deg);
@@ -20,26 +22,11 @@ $inputHeight: 40px;
 }
 
 .input {
+  @include form.inputBase();
   cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 8px;
-  padding: 10px 16px;
-  width: 100%;
   height: $inputHeight;
-  font-size: 14px;
-  font-family: vars.$fontFamilyInputs;
   user-select: none;
 
-  &::placeholder {
-    color: vars.$colorTextTertiary;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: none;
-  }
-
-  &:focus-visible,
   &.isOpen {
     border-color: vars.$colorOrange;
   }
@@ -77,11 +64,16 @@ $inputHeight: 40px;
   }
 }
 
+.label {
+  @include form.labelBase();
+}
+
 @keyframes slideDown {
   from {
     transform: translateY(-10px);
     opacity: 0;
   }
+
   to {
     transform: translateY(0);
     opacity: 1;
