@@ -27,12 +27,15 @@ const OptionsList: FC<OptionsListProps> = (props) => {
   const { options, selectedValue, onSelect } = props;
 
   return (
-    <ul style={{ listStyle: 'none', width: '100%' }}>
+    <ul className={styles.optionsList}>
       {options.map((option) => (
         <li
           key={option.value}
           onClick={() => onSelect(option.value)}
-          style={{ color: selectedValue === option.value ? 'red' : 'blue' }}
+          className={clsx(
+            styles.optionsListItem,
+            selectedValue === option.value && styles.isSelected
+          )}
         >
           {option.caption}
         </li>
@@ -86,18 +89,22 @@ export const Select: FC<SelectProps> = (props) => {
         createPortal(
           <div
             ref={dropdownMenuRef}
-            className="dropdown-menu"
+            className={styles.dropdownMenu}
             style={{
-              backgroundColor: 'yellow',
-              position: 'absolute',
               width: Number(inputRef.current?.getBoundingClientRect().width),
-              top: Number(inputRef.current?.getBoundingClientRect().y) + Number(styles.inputHeight),
+              top:
+                Number(inputRef.current?.getBoundingClientRect().y) +
+                Number(styles.inputHeight) +
+                4,
               left: Number(inputRef.current?.getBoundingClientRect().x),
             }}
           >
             <OptionsList
               options={options}
-              onSelect={setSelectedValue}
+              onSelect={(newValue) => {
+                setSelectedValue(newValue);
+                setIsOpen(false);
+              }}
               selectedValue={selectedValue}
             />
           </div>,

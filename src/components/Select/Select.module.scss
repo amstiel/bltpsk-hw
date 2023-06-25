@@ -26,6 +26,7 @@ $inputHeight: 40px;
   padding: 10px 16px;
   width: 100%;
   height: $inputHeight;
+  font-size: 14px;
   font-family: vars.$fontFamilyInputs;
   user-select: none;
 
@@ -41,6 +42,49 @@ $inputHeight: 40px;
   &:focus-visible,
   &.isOpen {
     border-color: vars.$colorOrange;
+  }
+}
+
+.dropdownMenu {
+  position: absolute;
+  transform: translateY(-10);
+  animation: slideDown ease-in-out 0.125s;
+  box-shadow: 0 10px 22px -4px rgba(27, 31, 35, 0.12);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.optionsList {
+  padding: 8px;
+  width: 100%;
+  list-style: none;
+}
+
+.optionsListItem {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-family: vars.$fontFamilyInputs;
+
+  &:hover {
+    background-color: lighten(vars.$colorOrange, 45);
+  }
+
+  &.isSelected {
+    background-color: lighten(vars.$colorOrange, 37);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
