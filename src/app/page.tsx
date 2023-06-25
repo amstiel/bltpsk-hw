@@ -12,9 +12,7 @@ const HomePage: FC = () => {
       <Container>
         <div className={styles.content}>
           <FiltersPanel />
-          <div>
-            <MoviesList />
-          </div>
+          <MoviesList />
         </div>
       </Container>
     </main>

@@ -1,10 +1,24 @@
 'use client';
 
-import { useCinemasQuery } from '@/redux/services/cinemas';
 import { FC } from 'react';
 
-export const MoviesList: FC = () => {
-  const { data: kek } = useCinemasQuery();
+import { useMoviesQuery } from '@/redux/services/movies';
 
-  return <div></div>;
+import { MovieCard } from '@/components/MovieCard/MovieCard';
+
+export const MoviesList: FC = () => {
+  const { data: movies } = useMoviesQuery();
+
+  return (
+    <section style={{ flexGrow: 1 }}>
+      {movies?.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          genre={movie.genre}
+          title={movie.title}
+          imageUrl={movie.posterUrl}
+        />
+      ))}
+    </section>
+  );
 };

@@ -1,0 +1,21 @@
+.image {
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.root {
+  display: flex;
+  border-radius: 8px;
+  background-color: white;
+  padding: 24px;
+
+  &:not(:last-of-type) {
+    margin-bottom: 12px;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  margin-left: auto;
+}

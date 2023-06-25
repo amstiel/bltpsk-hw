@@ -19,7 +19,7 @@
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
     "^@/domains/(.*)$",
-    "^@/stores/(.*)$",
+    "^@/redux/(.*)$",
     "^@/api/(.*)$",
     "^@/utils/(.*)$",
     "^@/router/(.*)$",
