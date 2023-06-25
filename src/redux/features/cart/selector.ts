@@ -10,3 +10,5 @@ export const selectTotalProductsAmount = (state: StoreState) =>
     acc += value;
     return acc;
   }, 0);
+
+export const selectProductIdsInCart = (state: StoreState) => Object.keys(selectCartModule(state));

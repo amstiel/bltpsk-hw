@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -20,9 +21,9 @@ export const Header: FC = () => {
         <div className={styles.content}>
           <h1 className={styles.title}>Билетопоиск {totalAmount}</h1>
 
-          <button className={styles.cartButton}>
+          <Link href="/cart" className={styles.cartButton}>
             <CartIcon />
-          </button>
+          </Link>
         </div>
       </Container>
     </header>
