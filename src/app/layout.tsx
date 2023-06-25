@@ -1,3 +1,4 @@
+import { StoreProvider } from '@/redux/StoreProvider';
 import clsx from 'clsx';
 import { Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
@@ -35,14 +36,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru">
       <body className={clsx(sfProFont.variable, robotoFont.className)}>
-        <div className="layout">
-          <Header />
-          {children}
-          <Footer />
-        </div>
+        <StoreProvider>
+          <div className="layout">
+            <Header />
+            {children}
+            <Footer />
+          </div>
 
-        <div id="dropdowns-portal-wrapper" />
-        <div id="modals-portal-wrapper" />
+          <div id="dropdowns-portal-wrapper" />
+          <div id="modals-portal-wrapper" />
+        </StoreProvider>
       </body>
     </html>
   );
