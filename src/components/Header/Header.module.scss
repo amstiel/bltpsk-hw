@@ -3,6 +3,7 @@
 .root {
   position: sticky;
   top: 0;
+  z-index: 2;
   background-color: vars.$colorGray1;
   height: vars.$headerHeight;
   color: white;
