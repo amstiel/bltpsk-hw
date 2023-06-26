@@ -6,9 +6,7 @@ export type FiltersState = {
   cinemaId?: string;
 };
 
-const initialState: FiltersState = {
-  name: 'kek',
-};
+const initialState: FiltersState = {};
 
 const filtersSlice = createSlice({
   name: 'filters',
