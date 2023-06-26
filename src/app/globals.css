@@ -10,6 +10,7 @@ body {
 
 .layout {
   display: grid;
+  position: relative;
   grid-template-rows: auto 1fr auto;
   grid-template-columns: 100%;
   min-height: 100vh;
@@ -22,6 +23,12 @@ button {
 button:focus {
   outline: none;
   box-shadow: none;
+}
+
+.portals-container {
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 button:focus-visible {

@@ -1,5 +1,8 @@
+@use '/src/styles/variables' as vars;
+
 .content {
   display: flex;
+  align-items: flex-start;
   gap: 24px;
-  padding-block: 24px;
+  padding-block: vars.$contentVerticalPadding;
 }

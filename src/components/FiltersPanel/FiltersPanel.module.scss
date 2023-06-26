@@ -1,8 +1,13 @@
+@use '/src/styles/variables' as vars;
+
 .root {
+  position: sticky;
+  top: vars.$headerHeight + vars.$contentVerticalPadding;
   flex: 0 0 408px;
   border-radius: 8px;
   background-color: white;
   padding: 24px;
+  //height: calc(100vh - #{vars.$contentVerticalPadding} * 2 - #{vars.$headerHeight});
 }
 
 .fieldset {
