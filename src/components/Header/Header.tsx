@@ -23,16 +23,19 @@ export const Header: FC = () => {
       <Container>
         <div className={styles.content}>
           {isOnHomePage ? (
-            <h1 className={styles.title}>Билетопоиск {totalAmount}</h1>
+            <h1 className={styles.title}>Билетопоиск</h1>
           ) : (
             <Link href="/" className={styles.titleLink}>
-              <h1 className={styles.title}>Билетопоиск {totalAmount}</h1>
+              <h1 className={styles.title}>Билетопоиск </h1>
             </Link>
           )}
 
-          <Link href="/cart" className={styles.cartButton}>
-            <CartIcon />
-          </Link>
+          <div className={styles.cartButtonWrapper}>
+            {totalAmount > 0 && <span className={styles.amount}>{totalAmount}</span>}
+            <Link href="/cart" className={styles.cartButton}>
+              <CartIcon />
+            </Link>
+          </div>
         </div>
       </Container>
     </header>

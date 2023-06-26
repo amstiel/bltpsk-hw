@@ -37,3 +37,17 @@
     text-decoration: underline;
   }
 }
+
+.cartButtonWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.amount {
+  border-radius: 8px;
+  background-color: vars.$colorOrange;
+  padding: 6px 10px;
+  color: white;
+  font-size: 14px;
+}
