@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  border-radius: 8px;
+  background-color: white;
+  padding: 24px;
+
+  &:not(:last-of-type) {
+    margin-bottom: 24px;
+  }
+}
+
+.content {
+  width: 100%;
+}
+
+.image {
+  flex-shrink: 0;
+  margin-right: 32px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.name {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.6;
+}

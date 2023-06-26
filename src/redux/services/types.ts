@@ -17,3 +17,10 @@ export type Movie = {
   director: string;
   reviewIds: string[];
 };
+
+export type Review = {
+  id: string;
+  name: string;
+  text: string;
+  rating: number;
+};
