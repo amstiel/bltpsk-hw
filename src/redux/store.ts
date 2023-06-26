@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { cartReducer } from '@/redux/features/cart';
+import { filtersReducer } from '@/redux/features/filters';
 import { api } from '@/redux/services/api';
 
 const persistConfig = {
@@ -25,6 +26,7 @@ const persistedReducer = persistReducer(
   combineReducers({
     [api.reducerPath]: api.reducer,
     cart: cartReducer,
+    filters: filtersReducer,
   })
 );
 

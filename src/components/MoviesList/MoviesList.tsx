@@ -4,6 +4,8 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 
 import { selectProductIdsInCart } from '@/redux/features/cart/selector';
+import { FiltersState } from '@/redux/features/filters';
+import { selectFilters } from '@/redux/features/filters/selector';
 import { useMoviesQuery } from '@/redux/services/movies';
 import { StoreState } from '@/redux/store';
 
@@ -19,6 +21,9 @@ export const MoviesList: FC<MoviesListProps> = (props) => {
   const movieIdsInCartArray = useSelector<StoreState, string[]>((state) =>
     selectProductIdsInCart(state)
   );
+  const { name, genreId, cinemaId } = useSelector<StoreState, FiltersState>((state) =>
+    selectFilters(state)
+  );
   const movieIdsInCart = new Set(movieIdsInCartArray);
 
   const moviesToRender =
@@ -26,16 +31,18 @@ export const MoviesList: FC<MoviesListProps> = (props) => {
 
   return (
     <section style={{ flexGrow: 1 }}>
-      {moviesToRender?.map((movie) => (
-        <MovieCard
-          id={movie.id}
-          key={movie.id}
-          genre={movie.genre}
-          title={movie.title}
-          isDeletable={mode === 'cart'}
-          imageUrl={movie.posterUrl}
-        />
-      ))}
+      {moviesToRender
+        ?.filter((movie) => (name !== undefined ? movie.title.includes(name) : true))
+        .map((movie) => (
+          <MovieCard
+            id={movie.id}
+            key={movie.id}
+            genre={movie.genre}
+            title={movie.title}
+            isDeletable={mode === 'cart'}
+            imageUrl={movie.posterUrl}
+          />
+        ))}
     </section>
   );
 };
