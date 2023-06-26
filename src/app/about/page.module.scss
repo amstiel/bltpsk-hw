@@ -1,0 +1,25 @@
+.content {
+  border-radius: 8px;
+  background-color: white;
+  padding: 24px;
+}
+
+.root {
+  padding-block: 24px;
+}
+
+.paragraph {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+
+  &:not(:last-of-type) {
+    margin-bottom: 16px;
+  }
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 32px;
+  line-height: 1;
+}
