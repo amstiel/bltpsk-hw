@@ -17,12 +17,12 @@ type MoviesListProps = {
 
 export const MoviesList: FC<MoviesListProps> = (props) => {
   const { mode = 'home' } = props;
-  const { data: movies } = useMoviesQuery();
-  const movieIdsInCartArray = useSelector<StoreState, string[]>((state) =>
-    selectProductIdsInCart(state)
-  );
   const { name, genreId, cinemaId } = useSelector<StoreState, FiltersState>((state) =>
     selectFilters(state)
+  );
+  const { data: movies } = useMoviesQuery(cinemaId);
+  const movieIdsInCartArray = useSelector<StoreState, string[]>((state) =>
+    selectProductIdsInCart(state)
   );
   const movieIdsInCart = new Set(movieIdsInCartArray);
 

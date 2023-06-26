@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { filtersActions, FiltersState } from '@/redux/features/filters';
 import { selectFilters } from '@/redux/features/filters/selector';
+import { useCinemasQuery } from '@/redux/services/cinemas';
 import { MovieGenre } from '@/redux/services/types';
 import { StoreState } from '@/redux/store';
 
@@ -14,21 +15,6 @@ import { Select, SelectOptions } from '@/components/Select/Select';
 import { TextField } from '@/components/TextField/TextField';
 
 import styles from './FiltersPanel.module.scss';
-
-const mockOpts: SelectOptions[] = [
-  {
-    value: '1',
-    caption: 'Option 1',
-  },
-  {
-    value: '2',
-    caption: 'Option 2',
-  },
-  {
-    value: '3',
-    caption: 'Option 3',
-  },
-];
 
 const genreOptions: Array<{ value: MovieGenre; caption: string }> = [
   {
@@ -52,6 +38,13 @@ const genreOptions: Array<{ value: MovieGenre; caption: string }> = [
 export const FiltersPanel: FC = () => {
   const filters = useSelector<StoreState, FiltersState>((state) => selectFilters(state));
   const dispatch = useDispatch();
+  const { data: cinemas } = useCinemasQuery();
+
+  const availableCinemasOptions: SelectOptions[] =
+    cinemas?.map((cinema) => ({
+      value: cinema.id,
+      caption: cinema.name,
+    })) ?? [];
 
   return (
     <aside className={styles.root}>
@@ -74,7 +67,15 @@ export const FiltersPanel: FC = () => {
             dispatch(filtersActions.setGenreId(newValue));
           }}
         />
-        <Select options={mockOpts} placeholder="Выберите кинотеатр" label="Кинотеатр" />
+        <Select
+          options={availableCinemasOptions}
+          placeholder="Выберите кинотеатр"
+          label="Кинотеатр"
+          value={filters.cinemaId}
+          onChange={(newValue) => {
+            dispatch(filtersActions.setCinemaId(newValue));
+          }}
+        />
       </fieldset>
     </aside>
   );
