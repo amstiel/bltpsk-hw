@@ -1,5 +1,27 @@
 @use '/src/styles/variables' as vars;
 
-.content {
+.root {
   padding-block: vars.$contentVerticalPadding;
+  height: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.summaryBlock {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  border-radius: 8px;
+  background-color: white;
+  padding: 24px;
+  font-size: 20px;
+
+  h5 {
+    font-size: inherit;
+  }
 }
