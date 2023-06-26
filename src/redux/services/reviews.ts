@@ -13,4 +13,4 @@ const moviesApi = api.injectEndpoints({
   overrideExisting: false,
 });
 
-export const { useReviewsQuery, useReviewsByMovieIdQuery } = moviesApi;
+export const { useReviewsByMovieIdQuery } = moviesApi;

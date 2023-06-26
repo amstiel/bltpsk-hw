@@ -17,6 +17,12 @@ export const ReviewsList: FC<ReviewsListProps> = (props) => {
   if (reviews === undefined) return;
 
   return reviews.map((review) => (
-    <ReviewCard key={review.id} rating={review.rating} name={review.name} text={review.text} />
+    <ReviewCard
+      key={review.id}
+      rating={review.rating}
+      name={review.name}
+      text={review.text}
+      avatarUrl={review.avatarUrl}
+    />
   ));
 };
