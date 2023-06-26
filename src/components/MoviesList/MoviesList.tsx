@@ -33,6 +33,7 @@ export const MoviesList: FC<MoviesListProps> = (props) => {
     <section style={{ flexGrow: 1 }}>
       {moviesToRender
         ?.filter((movie) => (name !== undefined ? movie.title.includes(name) : true))
+        ?.filter((movie) => (genreId !== undefined ? movie.genre === genreId : true))
         .map((movie) => (
           <MovieCard
             id={movie.id}

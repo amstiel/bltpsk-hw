@@ -44,12 +44,14 @@ type SelectProps = {
   options: SelectOptions[];
   label: string;
   placeholder?: string;
+  value?: string;
+  onChange?: (newValue?: string) => void;
 };
 
 export const Select: FC<SelectProps> = (props) => {
-  const { options, label, placeholder } = props;
+  const { options, label, placeholder, value, onChange } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState<SelectOptions['value'] | null>(null);
+  const [selectedValue, setSelectedValue] = useState<SelectOptions['value'] | null>(value ?? null);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dropdownMenuRef = useRef<HTMLDivElement | null>(null);
@@ -105,7 +107,13 @@ export const Select: FC<SelectProps> = (props) => {
             <OptionsList
               options={options}
               onSelect={(newValue) => {
-                setSelectedValue(newValue);
+                if (newValue === value) {
+                  setSelectedValue(null);
+                  onChange?.(undefined);
+                } else {
+                  setSelectedValue(newValue);
+                  onChange?.(newValue);
+                }
                 setIsOpen(false);
               }}
               selectedValue={selectedValue}
