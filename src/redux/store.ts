@@ -17,6 +17,7 @@ import { api } from '@/redux/services/api';
 
 const persistConfig = {
   key: 'root',
+  version: 1,
   whitelist: ['cart'],
   storage,
 };
@@ -38,7 +39,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat([api.middleware]),
-  devTools: process.env.NODE_ENV !== 'production',
+  devTools: true,
 });
 
 export const persistor = persistStore(store);

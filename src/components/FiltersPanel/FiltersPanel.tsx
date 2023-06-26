@@ -1,6 +1,6 @@
 'use client';
 
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { filtersActions, FiltersState } from '@/redux/features/filters';
@@ -10,6 +10,8 @@ import { MovieGenre } from '@/redux/services/types';
 import { StoreState } from '@/redux/store';
 
 import { genreCaptionById } from '@/utils/const';
+
+import { useDebounce } from '@/hooks/use-debounce';
 
 import { Select, SelectOptions } from '@/components/Select/Select';
 import { TextField } from '@/components/TextField/TextField';
@@ -39,12 +41,18 @@ export const FiltersPanel: FC = () => {
   const filters = useSelector<StoreState, FiltersState>((state) => selectFilters(state));
   const dispatch = useDispatch();
   const { data: cinemas } = useCinemasQuery();
+  const [nameValue, setNameValue] = useState<string>('');
+  const debouncedName = useDebounce<string>(nameValue, 500);
 
   const availableCinemasOptions: SelectOptions[] =
     cinemas?.map((cinema) => ({
       value: cinema.id,
       caption: cinema.name,
     })) ?? [];
+
+  useEffect(() => {
+    dispatch(filtersActions.setName(debouncedName));
+  }, [debouncedName, dispatch]);
 
   return (
     <aside className={styles.root}>
@@ -53,9 +61,9 @@ export const FiltersPanel: FC = () => {
         <TextField
           label="Название"
           placeholder="Введите название"
-          value={filters.name}
+          value={nameValue}
           onChange={(e) => {
-            dispatch(filtersActions.setName(e.target.value));
+            setNameValue(e.target.value);
           }}
         />
         <Select
