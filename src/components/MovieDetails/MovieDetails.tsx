@@ -8,6 +8,8 @@ import { useMovieByIdQuery } from '@/redux/services/movies';
 
 import { genreCaptionById } from '@/utils/const';
 
+import { MovieCartActions } from '@/components/MocieCartActions/MovieCartActions';
+
 import styles from './MovieDetails.module.scss';
 
 type MovieDetailsProps = {
@@ -31,7 +33,10 @@ export const MovieDetails: FC<MovieDetailsProps> = (props) => {
         height={500}
       />
       <div className={styles.content}>
-        <h2 className={styles.title}>{movieDetails.title}</h2>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{movieDetails.title}</h2>
+          <MovieCartActions movieId={id} />
+        </div>
         <dl className={styles.definitionsList}>
           <div className={styles.definitionRow}>
             <dt>Жанр:</dt>

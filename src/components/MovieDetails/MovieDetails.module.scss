@@ -16,10 +16,16 @@
 }
 
 .title {
-  margin-bottom: 24px;
   font-weight: 700;
   font-size: 32px;
   line-height: 1;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 .definitionsList {
