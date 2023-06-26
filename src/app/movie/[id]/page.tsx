@@ -15,8 +15,6 @@ const MoviePage: FC<MoviePageProps> = (props) => {
     params: { id },
   } = props;
 
-  console.log('id page', id);
-
   return (
     <main className={styles.content}>
       <Container>
