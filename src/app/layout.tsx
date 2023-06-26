@@ -1,7 +1,8 @@
-import { StoreProvider } from '@/redux/StoreProvider';
 import clsx from 'clsx';
 import { Roboto } from 'next/font/google';
 import localFont from 'next/font/local';
+
+import { StoreProvider } from '@/redux/StoreProvider';
 
 import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FC } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -30,7 +31,9 @@ export const MovieCard: FC<MovieCardProps> = (props) => {
     <article className={styles.root}>
       <Image className={styles.image} src={imageUrl} alt={title} width={100} height={120} />
       <div>
-        <h3>{title}</h3>
+        <Link href={`/movie/${id}`}>
+          <h1>{title}</h1>
+        </Link>
         <p>{genre}</p>
       </div>
       <div className={styles.actions}>
