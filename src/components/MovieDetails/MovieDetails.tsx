@@ -1,5 +1,6 @@
 'use client';
 
+import clsx from 'clsx';
 import Image from 'next/image';
 import { FC } from 'react';
 
@@ -11,17 +12,17 @@ import styles from './MovieDetails.module.scss';
 
 type MovieDetailsProps = {
   id: string;
+  className?: string;
 };
 
 export const MovieDetails: FC<MovieDetailsProps> = (props) => {
-  const { id } = props;
-  console.log('id', id);
+  const { id, className } = props;
   const { data: movieDetails } = useMovieByIdQuery(id);
 
   if (movieDetails === undefined) return null;
 
   return (
-    <section className={styles.root}>
+    <section className={clsx(styles.root, className)}>
       <Image
         className={styles.image}
         src={movieDetails.posterUrl}
@@ -54,7 +55,7 @@ export const MovieDetails: FC<MovieDetailsProps> = (props) => {
         </dl>
 
         <h3 className={styles.subtitle}>Описание</h3>
-        <p>{movieDetails.description}</p>
+        <p className={styles.description}>{movieDetails.description}</p>
       </div>
     </section>
   );
