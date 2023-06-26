@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+import { Container } from '@/components/Container/Container';
 import { MovieDetails } from '@/components/MovieDetails/MovieDetails';
 
 type MoviePageProps = {
@@ -14,9 +15,11 @@ const MoviePage: FC<MoviePageProps> = (props) => {
   console.log('id page', id);
 
   return (
-    <div>
-      <MovieDetails id={id} />
-    </div>
+    <main>
+      <Container>
+        <MovieDetails id={id} />
+      </Container>
+    </main>
   );
 };
 

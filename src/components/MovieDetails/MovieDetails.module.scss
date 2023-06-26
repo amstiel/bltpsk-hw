@@ -1,0 +1,50 @@
+@use '/src/styles/variables' as vars;
+
+.root {
+  display: flex;
+  border-radius: 8px;
+  background-color: white;
+  padding: 24px;
+  color: vars.$colorTextPrimary;
+}
+
+.image {
+  margin-right: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.title {
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.definitionsList {
+  margin-bottom: 32px;
+}
+
+.definitionRow {
+  display: flex;
+  font-size: 20px;
+  line-height: 1.2;
+
+  dt {
+    margin-right: 6px;
+    font-weight: 700;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 16px;
+  }
+}
+
+.subtitle {
+  margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 1.6;
+}
+
+.description {
+}
