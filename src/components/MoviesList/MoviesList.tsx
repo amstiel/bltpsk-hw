@@ -20,7 +20,7 @@ export const MoviesList: FC<MoviesListProps> = (props) => {
   const { name, genreId, cinemaId } = useSelector<StoreState, FiltersState>((state) =>
     selectFilters(state)
   );
-  const { data: movies } = useMoviesQuery(cinemaId);
+  const { data: movies } = useMoviesQuery(mode === 'home' ? cinemaId : undefined);
   const movieIdsInCartArray = useSelector<StoreState, string[]>((state) =>
     selectProductIdsInCart(state)
   );

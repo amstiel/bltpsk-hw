@@ -41,8 +41,8 @@ export const FiltersPanel: FC = () => {
   const filters = useSelector<StoreState, FiltersState>((state) => selectFilters(state));
   const dispatch = useDispatch();
   const { data: cinemas } = useCinemasQuery();
-  const [nameValue, setNameValue] = useState<string>('');
-  const debouncedName = useDebounce<string>(nameValue, 500);
+  const [nameValue, setNameValue] = useState<string>(filters.name ?? '');
+  const debouncedName = useDebounce<string>(nameValue, 350);
 
   const availableCinemasOptions: SelectOptions[] =
     cinemas?.map((cinema) => ({
