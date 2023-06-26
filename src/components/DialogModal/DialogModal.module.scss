@@ -1,0 +1,84 @@
+@use 'sass:math' as math;
+@use '/src/styles/variables' as vars;
+
+.root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  border-radius: 8px;
+  background-color: white;
+  padding: 24px;
+  width: 344px;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+%buttonBase {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding-inline: 16px;
+  height: 40px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.confirmButton {
+  @extend %buttonBase;
+
+  background-color: vars.$colorOrange;
+  color: white;
+}
+
+.cancelButton {
+  @extend %buttonBase;
+
+  border: 1px solid vars.$colorOrange;
+  background-color: white;
+  color: vars.$colorOrange;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.text {
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.closeButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  width: 16px;
+  height: 16px;
+
+  &:hover {
+    background-color: vars.$colorBorder;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
