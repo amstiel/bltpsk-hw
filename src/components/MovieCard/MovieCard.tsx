@@ -8,6 +8,8 @@ import { selectProductAmount } from '@/redux/features/cart/selector';
 import type { MovieGenre } from '@/redux/services/types';
 import { StoreState } from '@/redux/store';
 
+import { genreCaptionById } from '@/utils/const';
+
 import { DialogModal } from '@/components/DialogModal/DialogModal';
 import { CrossIcon } from '@/icons/CrossIcon';
 import { MinusIcon } from '@/icons/MinusIcon';
@@ -33,10 +35,10 @@ export const MovieCard: FC<MovieCardProps> = (props) => {
     <article className={styles.root}>
       <Image className={styles.image} src={imageUrl} alt={title} width={100} height={120} />
       <div>
-        <Link href={`/movie/${id}`}>
-          <h1>{title}</h1>
+        <Link href={`/movie/${id}`} className={styles.link}>
+          <h1 className={styles.title}>{title}</h1>
         </Link>
-        <p>{genre}</p>
+        <p className={styles.genre}>{genreCaptionById[genre]}</p>
       </div>
       <div className={styles.actions}>
         <button
