@@ -1,9 +1,14 @@
+import { Metadata } from 'next';
 import { FC } from 'react';
 
 import { Container } from '@/components/Container/Container';
 import { FoldableCard } from '@/components/FoldableCard/FoldableCard';
 
 import styles from './page.module.scss';
+
+export const metadata: Metadata = {
+  title: 'Билетопоиск | Вопрос и ответы',
+};
 
 const faqs = [
   {

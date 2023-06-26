@@ -1,8 +1,13 @@
+import { Metadata } from 'next';
 import { FC } from 'react';
 
 import { Container } from '@/components/Container/Container';
 
 import styles from './page.module.scss';
+
+export const metadata: Metadata = {
+  title: 'Билетопоиск | О нас',
+};
 
 const AboutPage: FC = () => {
   return (

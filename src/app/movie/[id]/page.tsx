@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { FC } from 'react';
 
 import { Container } from '@/components/Container/Container';
@@ -8,6 +9,10 @@ import styles from './page.module.scss';
 
 type MoviePageProps = {
   params: { id: string };
+};
+
+export const metadata: Metadata = {
+  title: 'Билетопоиск | О фильме',
 };
 
 const MoviePage: FC<MoviePageProps> = (props) => {
