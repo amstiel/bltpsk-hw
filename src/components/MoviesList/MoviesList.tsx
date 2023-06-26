@@ -49,7 +49,7 @@ export const MoviesList: FC<MoviesListProps> = (props) => {
     return (
       <StateInfo
         title="Ошибка загрузки данных"
-        description={<p>Возможно, недоступен бэкенд или выполняется неверный запрос.</p>}
+        description={<p>Возможно, недоступен сервер или выполняется неверный запрос.</p>}
         icon={WarningIcon}
       />
     );

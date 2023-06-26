@@ -1,20 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { FC } from 'react';
 
-import { cartActions } from '@/redux/features/cart';
-import { selectProductAmount } from '@/redux/features/cart/selector';
 import type { MovieGenre } from '@/redux/services/types';
-import { StoreState } from '@/redux/store';
 
 import { genreCaptionById } from '@/utils/const';
 
-import { DialogModal } from '@/components/DialogModal/DialogModal';
 import { MovieCartActions } from '@/components/MocieCartActions/MovieCartActions';
-import { CrossIcon } from '@/icons/CrossIcon';
-import { MinusIcon } from '@/icons/MinusIcon';
-import { PlusIcon } from '@/icons/PlusIcon';
 
 import styles from './MovieCard.module.scss';
 

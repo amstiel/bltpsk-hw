@@ -8,7 +8,10 @@ import { useMovieByIdQuery } from '@/redux/services/movies';
 
 import { genreCaptionById } from '@/utils/const';
 
+import { LoadingSpinner } from '@/components/LoadingSpinner/LoadingSpinner';
 import { MovieCartActions } from '@/components/MocieCartActions/MovieCartActions';
+import { StateInfo } from '@/components/StateInfo/StateInfo';
+import { WarningIcon } from '@/icons/WarningIcon';
 
 import styles from './MovieDetails.module.scss';
 
@@ -19,7 +22,27 @@ type MovieDetailsProps = {
 
 export const MovieDetails: FC<MovieDetailsProps> = (props) => {
   const { id, className } = props;
-  const { data: movieDetails } = useMovieByIdQuery(id);
+  const { data: movieDetails, isLoading, isFetching, isError } = useMovieByIdQuery(id);
+
+  if (movieDetails === null || isError) {
+    return (
+      <StateInfo
+        title="Ошибка загрузки фильма"
+        description={<p>Возможно, недоступен сервер или указан неверный ID фильма.</p>}
+        icon={WarningIcon}
+      />
+    );
+  }
+
+  if (isLoading || isFetching) {
+    return (
+      <StateInfo
+        title="Загрузка..."
+        description={<p>Данные о фильме подгружаются, пожалуйста, подождите.</p>}
+        icon={LoadingSpinner}
+      />
+    );
+  }
 
   if (movieDetails === undefined) return null;
 
