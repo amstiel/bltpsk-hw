@@ -27,23 +27,24 @@ export const MoviesList: FC<MoviesListProps> = (props) => {
   const movieIdsInCart = new Set(movieIdsInCartArray);
 
   const moviesToRender =
-    mode === 'home' ? movies : movies?.filter((movie) => movieIdsInCart.has(movie.id));
+    mode === 'home'
+      ? movies
+          ?.filter((movie) => (name !== undefined ? movie.title.includes(name) : true))
+          ?.filter((movie) => (genreId !== undefined ? movie.genre === genreId : true))
+      : movies?.filter((movie) => movieIdsInCart.has(movie.id));
 
   return (
     <section style={{ flexGrow: 1 }}>
-      {moviesToRender
-        ?.filter((movie) => (name !== undefined ? movie.title.includes(name) : true))
-        ?.filter((movie) => (genreId !== undefined ? movie.genre === genreId : true))
-        .map((movie) => (
-          <MovieCard
-            id={movie.id}
-            key={movie.id}
-            genre={movie.genre}
-            title={movie.title}
-            isDeletable={mode === 'cart'}
-            imageUrl={movie.posterUrl}
-          />
-        ))}
+      {moviesToRender?.map((movie) => (
+        <MovieCard
+          id={movie.id}
+          key={movie.id}
+          genre={movie.genre}
+          title={movie.title}
+          isDeletable={mode === 'cart'}
+          imageUrl={movie.posterUrl}
+        />
+      ))}
     </section>
   );
 };
